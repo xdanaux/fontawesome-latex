@@ -1,0 +1,356 @@
+%% start of file `fontawesome.tex'.
+%% Copyright 2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+\documentclass{ltxdoc}
+%\GetFileInfo{\jobname.sty}
+\def\fileversion{3.0.2}
+\def\filedate{March 21, 2013}
+\usepackage{lmodern}
+\usepackage[numbered]{hypdoc}
+\usepackage{hologo}
+\usepackage{hyperref, xcolor}
+\definecolor{myblue}{rgb}{0.22,0.45,0.70}% light blue
+\hypersetup{colorlinks=true, linkcolor=myblue, urlcolor=myblue}
+\usepackage{longtable, booktabs}
+\usepackage{\jobname}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+
+\begin{document}
+\title{The \textsf{\jobname} package\\High quality web icons}
+\author{%
+  Xavier Danaux\thanks{E-mail: \href{mailto:xdanaux@gmail.com}{\tt xdanaux@gmail.com}} (\hologo{LaTeX} code)\\%
+  Dave Gandy (font and icons design)}
+\date{Version \fileversion, released on \filedate}
+\maketitle
+
+\begin{abstract}
+The \textsf{\jobname} package grants access to 249 web-related icons provided by the included \emph{Font Awesome} free font, designed by Dave Gandy and released\footnote{See \url{http://fortawesome.github.com/Font-Awesome} for more details about the font itself} under the open SIL Open Font License\footnote{Available at \url{http://scripts.sil.org/OFL}.}.
+
+This package requires the \textsf{fontspec} package and either the \hologo{Xe}\hologo{(La)TeX} or Lua\hologo{(La)TeX} engine to load the included otf font.
+\end{abstract}
+
+\changes{v3.0.2}{2013/03/21}{First public release (version number set to match the included FontAwesome.otf font version).}
+
+\bigskip
+
+\section{Introduction}
+The \textsf{\jobname} package aims to enable easy access in \hologo{(La)TeX} to high quality icons covering
+\hyperref[section:web_application]{web application},
+\hyperref[section:text_editor]{text editor},
+\hyperref[section:directional]{directional},
+\hyperref[section:video_player]{video player},
+\hyperref[section:social]{social} and
+\hyperref[section:medical]{medical}
+pictograms.
+It is a redistribution of the free (as in beer) \emph{Font Awesome} otf font with specific bindings for \hologo{(La)TeX}.
+
+\section{Requirements}
+The \textsf{\jobname} package requires the \textsf{fontspec} package and either the \hologo{Xe}\hologo{(La)TeX} or Lua\hologo{(La)TeX} engine to load the included otf font.
+
+\section{Usage}
+\DescribeMacro{\faicon}
+Once the \textsf{\jobname} package loaded, icons can be accessed through the general \cs{faicon}, which takes as mandatory argument the \meta{name} of the desired icon, or through a direct command specific to each icon. The full list of icon designs, names and direct commands are showcased next.
+
+\newenvironment{showcase}
+  {%
+%   \begin{longtable}{ccp{2.8cm}p{3.5cm}}% debug: shows icons with both generic and specific commands
+   \begin{longtable}{cp{2.8cm}p{3.5cm}}
+   \toprule
+%   \bfseries Icon& \bfseries Icon& \bfseries Name& \bfseries Direct command\\% debug
+   \bfseries Icon& \bfseries Name& \bfseries Direct command\\
+   \midrule\endhead}
+  {\bottomrule
+   \end{longtable}}
+\newcommand*{\showcaseicon}[2]{%
+%  \faicon{#1}& \csname#2\endcsname& \itshape #1& \ttfamily \textbackslash #2\index{\ttfamily \textbackslash #2}\\}% debug
+  \faicon{#1}& \itshape #1& \ttfamily \textbackslash #2\index{\ttfamily \textbackslash #2}\\}
+
+\subsection{Web application icons\label{section:web_application}}
+\begin{showcase}
+  \showcaseicon{adjust}{faAdjust}
+  \showcaseicon{asterisk}{faAsterisk}
+  \showcaseicon{ban-circle}{faBanCircle}
+  \showcaseicon{bar-chart}{faBarChart}
+  \showcaseicon{barcode}{faBarcode}
+  \showcaseicon{beaker}{faBeaker}
+  \showcaseicon{beer}{faBeer}
+  \showcaseicon{bell}{faBell}
+  \showcaseicon{bell-alt}{faBellAlt}
+  \showcaseicon{bolt}{faBolt}
+  \showcaseicon{book}{faBook}
+  \showcaseicon{bookmark}{faBookmark}
+  \showcaseicon{bookmark-empty}{faBookmarkEmpty}
+  \showcaseicon{briefcase}{faBriefcase}
+  \showcaseicon{bullhorn}{faBullhorn}
+  \showcaseicon{calendar}{faCalendar}
+  \showcaseicon{camera}{faCamera}
+  \showcaseicon{camera-retro}{faCameraRetro}
+  \showcaseicon{certificate}{faCertificate}
+  \showcaseicon{check}{faCheck}
+  \showcaseicon{check-empty}{faCheckEmpty}
+  \showcaseicon{circle}{faCircle}
+  \showcaseicon{circle-blank}{faCircleBlank}
+  \showcaseicon{cloud}{faCloud}
+  \showcaseicon{cloud-download}{faCloudDownload}
+  \showcaseicon{cloud-upload}{faCloudUpload}
+  \showcaseicon{coffee}{faCoffee}
+  \showcaseicon{cog}{faCog}
+  \showcaseicon{cogs}{faCogs}
+  \showcaseicon{comment}{faComment}
+  \showcaseicon{comment-alt}{faCommentAlt}
+  \showcaseicon{comments}{faComments}
+  \showcaseicon{comments-alt}{faCommentsAlt}
+  \showcaseicon{credit-card}{faCreditCard}
+  \showcaseicon{dashboard}{faDashboard}
+  \showcaseicon{desktop}{faDesktop}
+  \showcaseicon{download}{faDownload}
+  \showcaseicon{download-alt}{faDownloadAlt}
+  \showcaseicon{edit}{faEdit}
+  \showcaseicon{envelope}{faEnvelope}
+  \showcaseicon{envelope-alt}{faEnvelopeAlt}
+  \showcaseicon{exchange}{faExchange}
+  \showcaseicon{exclamation-sign}{faExclamationSign}
+  \showcaseicon{external-link}{faExternalLink}
+  \showcaseicon{eye-close}{faEyeClose}
+  \showcaseicon{eye-open}{faEyeOpen}
+  \showcaseicon{facetime-video}{faFacetimeVideo}
+  \showcaseicon{fighter-jet}{faFighterJet}
+  \showcaseicon{film}{faFilm}
+  \showcaseicon{filter}{faFilter}
+  \showcaseicon{fire}{faFire}
+  \showcaseicon{flag}{faFlag}
+  \showcaseicon{folder-open}{faFolderOpen}
+  \showcaseicon{folder-close}{faFolderClose}
+  \showcaseicon{folder-open-alt}{faFolderOpenAlt}
+  \showcaseicon{folder-close-alt}{faFolderCloseAlt}
+  \showcaseicon{food}{faFood}
+  \showcaseicon{gift}{faGift}
+  \showcaseicon{glass}{faGlass}
+  \showcaseicon{globe}{faGlobe}
+  \showcaseicon{group}{faGroup}
+  \showcaseicon{hdd}{faHDD}
+  \showcaseicon{headphones}{faHeadphones}
+  \showcaseicon{heart}{faHeart}
+  \showcaseicon{heart-empty}{faHeartEmpty}
+  \showcaseicon{home}{faHome}
+  \showcaseicon{inbox}{faInbox}
+  \showcaseicon{info-sign}{faInfoSign}
+  \showcaseicon{key}{faKey}
+  \showcaseicon{laptop}{faLaptop}
+  \showcaseicon{leaf}{faLeaf}
+  \showcaseicon{legal}{faLegal}
+  \showcaseicon{lemon}{faLemon}
+  \showcaseicon{lightbulb}{faLightbulb}
+  \showcaseicon{lock}{faLock}
+  \showcaseicon{unlock}{faUnlock}
+  \showcaseicon{magic}{faMagic}
+  \showcaseicon{magnet}{faMagnet}
+  \showcaseicon{map-marker}{faMapMarker}
+  \showcaseicon{minus}{faMinus}
+  \showcaseicon{minus-sign}{faMinusSign}
+  \showcaseicon{mobile-phone}{faMobilePhone}
+  \showcaseicon{money}{faMoney}
+  \showcaseicon{move}{faMove}
+  \showcaseicon{music}{faMusic}
+  \showcaseicon{off}{faOff}
+  \showcaseicon{ok}{faOk}
+  \showcaseicon{ok-circle}{faOkCircle}
+  \showcaseicon{ok-sign}{faOkSign}
+  \showcaseicon{pencil}{faPencil}
+  \showcaseicon{picture}{faPicture}
+  \showcaseicon{plane}{faPlane}
+  \showcaseicon{plus}{faPlus}
+  \showcaseicon{plus-sign}{faPlusSign}
+  \showcaseicon{print}{faPrint}
+  \showcaseicon{pushpin}{faPushpin}
+  \showcaseicon{qrcode}{faQRcode}
+  \showcaseicon{question-sign}{faQuestionSign}
+  \showcaseicon{quote-left}{faQuoteLeft}
+  \showcaseicon{quote-right}{faQuoteRight}
+  \showcaseicon{random}{faRandom}
+  \showcaseicon{refresh}{faRefresh}
+  \showcaseicon{remove}{faRemove}
+  \showcaseicon{remove-circle}{faRemoveCircle}
+  \showcaseicon{remove-sign}{faRemoveSign}
+  \showcaseicon{reorder}{faReorder}
+  \showcaseicon{reply}{faReply}
+  \showcaseicon{resize-horizontal}{faResizeHorizontal}
+  \showcaseicon{resize-vertical}{faResizeVertical}
+  \showcaseicon{retweet}{faRetweet}
+  \showcaseicon{road}{faRoad}
+  \showcaseicon{rss}{faRSS}
+  \showcaseicon{screenshot}{faScreenshot}
+  \showcaseicon{search}{faSearch}
+  \showcaseicon{share}{faShare}
+  \showcaseicon{share-alt}{faShareAlt}
+  \showcaseicon{shopping-cart}{faShoppingCart}
+  \showcaseicon{signal}{faSignal}
+  \showcaseicon{signin}{faSignin}
+  \showcaseicon{signout}{faSignout}
+  \showcaseicon{sitemap}{faSitemap}
+  \showcaseicon{sort}{faSort}
+  \showcaseicon{sort-down}{faSortDown}
+  \showcaseicon{sort-up}{faSortUp}
+  \showcaseicon{spinner}{faSpinner}
+  \showcaseicon{star}{faStar}
+  \showcaseicon{star-empty}{faStarEmpty}
+  \showcaseicon{star-half}{faStarHalf}
+  \showcaseicon{tablet}{faTablet}
+  \showcaseicon{tag}{faTag}
+  \showcaseicon{tags}{faTags}
+  \showcaseicon{tasks}{faTasks}
+  \showcaseicon{thumbs-down}{faThumbsDown}
+  \showcaseicon{thumbs-up}{faThumbsUp}
+  \showcaseicon{time}{faTime}
+  \showcaseicon{tint}{faTint}
+  \showcaseicon{trash}{faTrash}
+  \showcaseicon{trophy}{faTrophy}
+  \showcaseicon{truck}{faTruck}
+  \showcaseicon{umbrella}{faUmbrella}
+  \showcaseicon{upload}{faUpload}
+  \showcaseicon{upload-alt}{faUploadAlt}
+  \showcaseicon{user}{faUser}
+  \showcaseicon{user-md}{faUserMD}
+  \showcaseicon{volume-off}{faVolumeOff}
+  \showcaseicon{volume-down}{faVolumeDown}
+  \showcaseicon{volume-up}{faVolumeUp}
+  \showcaseicon{warning-sign}{faWarningSign}
+  \showcaseicon{wrench}{faWrench}
+  \showcaseicon{zoom-in}{faZoomIn}
+  \showcaseicon{zoom-out}{faZoomOut}
+\end{showcase}
+
+\subsection{Text editor icons\label{section:text_editor}}
+\begin{showcase}
+  \showcaseicon{file}{faFile}
+  \showcaseicon{file-alt}{faFileAlt}
+  \showcaseicon{cut}{faCut}
+  \showcaseicon{copy}{faCopy}
+  \showcaseicon{paste}{faPaste}
+  \showcaseicon{save}{faSave}
+  \showcaseicon{undo}{faUndo}
+  \showcaseicon{repeat}{faRepeat}
+  \showcaseicon{text-height}{faTextHeight}
+  \showcaseicon{text-width}{faTextWidth}
+  \showcaseicon{align-left}{faAlignLeft}
+  \showcaseicon{align-center}{faAlignCenter}
+  \showcaseicon{align-right}{faAlignRight}
+  \showcaseicon{align-justify}{faAlignJustify}
+  \showcaseicon{indent-left}{faIndentLeft}
+  \showcaseicon{indent-right}{faIndentRight}
+  \showcaseicon{font}{faFont}
+  \showcaseicon{bold}{faBold}
+  \showcaseicon{italic}{faItalic}
+  \showcaseicon{strikethrough}{faStrikethrough}
+  \showcaseicon{underline}{faUnderline}
+  \showcaseicon{link}{faLink}
+  \showcaseicon{paper-clip}{faPaperClip}
+  \showcaseicon{columns}{faColumns}
+  \showcaseicon{table}{faTable}
+  \showcaseicon{thumbnails-large}{faThumbnailsLarge}
+  \showcaseicon{thumbnails}{faThumbnails}
+  \showcaseicon{thumbnails-list}{faThumbnailsList}
+  \showcaseicon{list}{faList}
+  \showcaseicon{list-ol}{faListOL}
+  \showcaseicon{list-ul}{faListUL}
+  \showcaseicon{list-alt}{faListAlt}
+\end{showcase}
+
+\subsection{Directional icons\label{section:directional}}
+\begin{showcase}
+  \showcaseicon{angle-left}{faAngleLeft}
+  \showcaseicon{angle-right}{faAngleRight}
+  \showcaseicon{angle-up}{faAngleUp}
+  \showcaseicon{angle-down}{faAngleDown}
+  \showcaseicon{arrow-left}{faArrowLeft}
+  \showcaseicon{arrow-right}{faArrowRight}
+  \showcaseicon{arrow-up}{faArrowUp}
+  \showcaseicon{arrow-down}{faArrowDown}
+  \showcaseicon{caret-left}{faCaretLeft}
+  \showcaseicon{caret-right}{faCaretRight}
+  \showcaseicon{caret-up}{faCaretUp}
+  \showcaseicon{caret-down}{faCaretDown}
+  \showcaseicon{chevron-left}{faChevronLeft}
+  \showcaseicon{chevron-right}{faChevronRight}
+  \showcaseicon{chevron-up}{faChevronUp}
+  \showcaseicon{chevron-down}{faChevronDown}
+  \showcaseicon{circle-arrow-left}{faCircleArrowLeft}
+  \showcaseicon{circle-arrow-right}{faCircleArrowRight}
+  \showcaseicon{circle-arrow-up}{faCircleArrowUp}
+  \showcaseicon{circle-arrow-down}{faCircleArrowDown}
+  \showcaseicon{double-angle-left}{faDoubleAngleLeft}
+  \showcaseicon{double-angle-right}{faDoubleAngleRight}
+  \showcaseicon{double-angle-up}{faDoubleAngleUp}
+  \showcaseicon{double-angle-down}{faDoubleAngleDown}
+  \showcaseicon{hand-left}{faHandLeft}
+  \showcaseicon{hand-right}{faHandRight}
+  \showcaseicon{hand-up}{faHandUp}
+  \showcaseicon{hand-down}{faHandDown}
+  \showcaseicon{circle}{faCircle}
+  \showcaseicon{circle-blank}{faCircleBlank}
+\end{showcase}
+
+\subsection{Video player icons\label{section:video_player}}
+\begin{showcase}
+  \showcaseicon{play-circle}{faPlayCircle}
+  \showcaseicon{play}{faPlay}
+  \showcaseicon{pause}{faPause}
+  \showcaseicon{stop}{faStop}
+  \showcaseicon{step-backward}{faStepBackward}
+  \showcaseicon{fast-backward}{faFastBackward}
+  \showcaseicon{backward}{faBackward}
+  \showcaseicon{forward}{faForward}
+  \showcaseicon{fast-forward}{faFastForward}
+  \showcaseicon{step-forward}{faStepForward}
+  \showcaseicon{eject}{faEject}
+  \showcaseicon{fullscreen}{faFullscreen}
+  \showcaseicon{resize-full}{faResizeFull}
+  \showcaseicon{resize-small}{faResizeSmall}
+\end{showcase}
+
+\subsection{Social icons\label{section:social}}
+\begin{showcase}
+  \showcaseicon{phone}{faPhone}
+  \showcaseicon{phone-sign}{faPhoneSign}
+  \showcaseicon{facebook}{faFacebook}
+  \showcaseicon{facebook-sign}{faFacebookSign}
+  \showcaseicon{twitter}{faTwitter}
+  \showcaseicon{twitter-sign}{faTwitterSign}
+  \showcaseicon{github}{faGithub}
+  \showcaseicon{github-alt}{faGithubAlt}
+  \showcaseicon{github-sign}{faGithubSign}
+  \showcaseicon{linkedin}{faLinkedin}
+  \showcaseicon{linkedin-sign}{faLinkedinSign}
+  \showcaseicon{pinterest}{faPinterest}
+  \showcaseicon{pinterest-sign}{faPinterestSign}
+  \showcaseicon{google-plus}{faGooglePlus}
+  \showcaseicon{google-plus-sign}{faGooglePlusSign}
+  \showcaseicon{sign-blank}{faSignBlank}
+\end{showcase}
+
+\subsection{Medical icons\label{section:medical}}
+\begin{showcase}
+  \showcaseicon{ambulance}{faAmbulance}
+  \showcaseicon{beaker}{faBeaker}
+  \showcaseicon{building}{faBuilding}
+  \showcaseicon{hospital}{faHospital}
+  \showcaseicon{hospital-sign}{faHospitalSign}
+  \showcaseicon{medical-kit}{faMedicalKit}
+  \showcaseicon{medical-sign}{faMedicalSign}
+  \showcaseicon{stethoscope}{faStethoscope}
+  \showcaseicon{suitcase}{faSuitcase}
+  \showcaseicon{user-md}{faUserMD}
+\end{showcase}
+
+\PrintChanges
+\PrintIndex
+\end{document}
+
+
+%% end of file `fontawesome.tex'.
