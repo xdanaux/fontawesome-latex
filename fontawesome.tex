@@ -7,14 +7,14 @@
 
 \documentclass{ltxdoc}
 %\GetFileInfo{\jobname.sty}
-\def\fileversion{3.0.2}
-\def\filedate{March 21, 2013}
+\def\fileversion{3.0.2-1}
+\def\filedate{March 23, 2013}
 \usepackage{lmodern}
 \usepackage[numbered]{hypdoc}
 \usepackage{hologo}
 \usepackage{hyperref, xcolor}
 \definecolor{myblue}{rgb}{0.22,0.45,0.70}% light blue
-\hypersetup{colorlinks=true, linkcolor=myblue, urlcolor=myblue}
+\hypersetup{colorlinks=true, linkcolor=myblue, urlcolor=myblue, hyperindex}
 \usepackage{longtable, booktabs}
 \usepackage{\jobname}
 \EnableCrossrefs
@@ -36,6 +36,20 @@ This package requires the \textsf{fontspec} package and either the \hologo{Xe}\h
 \end{abstract}
 
 \changes{v3.0.2}{2013/03/21}{First public release (version number set to match the included FontAwesome.otf font version).}
+\makeatletter
+\let\PrintMacroName@original\PrintMacroName
+%\let\PrintDescribeMacro\@gobble
+%\let\PrintDescribeEnv\@gobble
+\let\PrintMacroName\@gobble
+%\let\PrintEnvName\@gobble
+\begin{macro}{\faTextHeight}
+\changes{v3.0.2-1}{2013/03/23}{Corrected the bindings icons of \cs{text-height} and \cs{text-width}, which were inverted.}
+\end{macro}
+\begin{macro}{\faTextWidth}
+\changes{v3.0.2-1}{2013/03/23}{Corrected the bindings icons of \cs{text-height} and \cs{text-width}, which were inverted.}
+\end{macro}
+\let\PrintMacroName\PrintMacroName@original
+\makeatother
 
 \bigskip
 
