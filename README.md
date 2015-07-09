@@ -18,7 +18,9 @@ commands is showcased in the manual.
 Font Awesome font<br/>
 Author: Dave Gandy<br/>
 Licence: SIL Open Font License, version 1.1
+URL: http://www.fontawesome.io
 
 fontawesome LaTeX package<br/>
 Author: Xavier Danaux <xdanaux@gmail.com><br/>
 Licence: The LaTeX Project Public Li­cense, version 1.3c
+URL: https://github.com/xdanaux/fontawesome-latex
