@@ -1,12 +1,13 @@
 #fontawesome -- high quality web icons#
 
-The **fontawesome** package grants access to 302 web-related icons provided by the
-included _Font Awesome_ free font, designed by Dave Gandy and released under
+The **fontawesome** package grants access to 519 web-related icons provided by
+the included _Font Awesome_ free font, designed by Dave Gandy and released under
 the open SIL Open Font License (available at http://scripts.sil.org/OFL).
 See http://www.fontawesome.io for more details about the font itself.
 
-This package requires the _fontspec_ package and either the Xe(La)TeX or
-Lua(La)TeX engine to load the included otf font.
+This package works both with Xe(La)TeX and Lua(La)TeX (using _fontspec_ to load
+the included original otf font), as well as pdf(La)TeX (using an included
+type1 conversion and character mapping of the font).
 
 Once the package is loaded, icons can be accessed through the general `\faicon`
 command, which takes as argument the name of the desired icon, or through direct

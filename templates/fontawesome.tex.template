@@ -1,0 +1,139 @@
+%% start of file `fontawesome.tex'.
+%% Copyright 2015 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+\documentclass{ltxdoc}
+%\GetFileInfo{\jobname.sty}
+\def\fileversion{4.3.0}
+\def\filedate{July 07, 2015}
+\usepackage{lmodern}
+\usepackage[numbered]{hypdoc}
+\usepackage{hologo}
+\usepackage{hyperref, xcolor}
+\definecolor{myblue}{rgb}{0.22,0.45,0.70}% light blue
+\hypersetup{colorlinks=true, linkcolor=myblue, urlcolor=myblue, hyperindex}
+\usepackage{longtable, booktabs}
+\usepackage{tikz}
+\usepackage{xparse, ifthen}
+\usepackage{\jobname}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+
+\begin{document}
+\title{The \textsf{\jobname} package\\High quality web icons}
+\author{%
+  Xavier Danaux\thanks{E-mail: \href{mailto:xdanaux@gmail.com}{\tt xdanaux@gmail.com}} (\hologo{LaTeX} code)\\%
+  Dave Gandy (font and icons design)}
+\date{Version \fileversion, released on \filedate}
+\maketitle
+
+\begin{abstract}
+The \textsf{\jobname} package grants access to 519 web-related icons provided by the included \emph{Font Awesome} free font, designed by Dave Gandy and released\footnote{See \url{http://fortawesome.github.com/Font-Awesome} for more details about the font itself} under the open SIL Open Font License\footnote{Available at \url{http://scripts.sil.org/OFL}.}.
+
+This package works both with \hologo{Xe}\hologo{(La)TeX} and Lua\hologo{(La)TeX} (using \textsf{fontspec} to load the included original \textsf{otf} font), as well as pdf\hologo{(La)TeX} (using an included \textsf{type1} conversion and character mapping of the font).
+\end{abstract}
+
+\changes{v4.3.0}  {2015/07/07}{Update to match Font Awesome version 4.3.0, with a total of 519 icons.}
+\changes{v3.1.1}  {2013/05/10}{Update to match Font Awesome version 3.1.1, with 53 new icons.}
+\changes{v3.0.2-1}{2013/03/23}{Bigfix release: corrected the swap of the \cs{text-height} and \cs{text-width} icons.}
+\changes{v3.0.2}  {2013/03/21}{First public release (version number set to match the included FontAwesome.otf font version).}
+\makeatletter
+\let\PrintMacroName@original\PrintMacroName
+%\let\PrintDescribeMacro\@gobble
+%\let\PrintDescribeEnv\@gobble
+\let\PrintMacroName\@gobble
+%\let\PrintEnvName\@gobble
+\begin{macro}{\faTextHeight}
+\changes{v3.0.2-1}{2013/03/23}{Corrected binding.}
+\end{macro}
+\begin{macro}{\faTextWidth}
+\changes{v3.0.2-1}{2013/03/23}{Corrected binding.}
+\end{macro}
+\let\PrintMacroName\PrintMacroName@original
+\makeatother
+
+\bigskip
+
+\section{Introduction}
+The \textsf{\jobname} package aims to enable easy access in \hologo{(La)TeX} to high quality icons covering
+web application,
+transportation,
+gender,
+file type,
+spinner,
+form control,
+payment,
+chart,
+currency,
+text editor,
+directional,
+video player,
+brand and
+medical
+pictograms.
+%\hyperref[section:web_application]{web application},
+%\hyperref[section:transportation]{transportation},
+%\hyperref[section:gender]{gender},
+%\hyperref[section:file_type]{file type},
+%\hyperref[section:spinner]{spinner},
+%\hyperref[section:form_control]{form control},
+%\hyperref[section:payment]{payment},
+%\hyperref[section:chart]{chart},
+%\hyperref[section:currency]{currency},
+%\hyperref[section:text_editor]{text editor},
+%\hyperref[section:directional]{directional},
+%\hyperref[section:video_player]{video player},
+%\hyperref[section:brand]{brand} and
+%\hyperref[section:medical]{medical}
+%pictograms.
+It is a redistribution of the free (as in beer) \emph{Font Awesome} font with specific bindings for \hologo{(La)TeX}.
+
+\section{Requirements}
+The \textsf{\jobname} package requires the \textsf{fontspec} package when using the \hologo{Xe}\hologo{(La)TeX} or Lua\hologo{(La)TeX} engines to load the included otf font. When using the pdf\hologo{(La)TeX} engine, the \textsf{\jobname} package doesn't require any external package.
+
+\section{Usage}
+\DescribeMacro{\faicon}
+Once the \textsf{\jobname} package loaded, icons can be accessed through the general \cs{faicon}, which takes as mandatory argument the \meta{name} of the desired icon, or through a direct command specific to each icon. The full list of icon designs, names and direct commands are showcased next.
+
+\newenvironment{showcase}%
+  {%
+%   \begin{longtable}{ccp{3cm}p{3.5cm}p{1cm}}% debug: shows icons with both generic and specific commands
+   \begin{longtable}{clll}
+   \cmidrule[\heavyrulewidth]{1-3}% \toprule
+%   \bfseries Icon& \bfseries Icon& \bfseries Name& \bfseries Direct command& \\% debug
+   \bfseries Icon& \bfseries Name& \bfseries Direct command& \\
+   \cmidrule{1-3}\endhead}
+  {\cmidrule[\heavyrulewidth]{1-3}% \bottomrule
+   \end{longtable}}
+\NewDocumentCommand{\showcaseicon}{mmg}{%
+%  \faicon{#1}& \csname#2\endcsname& \itshape #1& \ttfamily \textbackslash #2\index{\ttfamily \textbackslash #2}& \IfNoValueTF{#3}{}{\tag{#3}}\\}% debug
+  \faicon{#1}& \itshape #1& \ttfamily \textbackslash #2\index{\ttfamily \textbackslash #2}& \IfNoValueTF{#3}{}{\tag{#3}}\\}
+\newcommand{\tag}[1]{{%
+  \small\sffamily%
+  \ifthenelse{\equal{#1}{new}}{%
+    \tikz[baseline={(TAG.base)}]{
+      \node[white, fill=myblue, rounded corners=3pt, inner sep=1.5pt] (TAG) {new!\vphantom{Ay!}};
+    }}{}%
+  \ifthenelse{\equal{#1}{gone}}{%
+    \tikz[baseline={(TAG.base)}]{
+      \node[black!50, fill=black!25, rounded corners=3pt, inner sep=1.5pt] (TAG) {gone (?)\vphantom{Ay!}};
+    }}{}%
+  \ifthenelse{\equal{#1}{alias}}{%
+    \textcolor{black!50}{(alias)}}{}%
+  }}
+
+\subsection{Web application icons\label{section:web_application}}
+\begin{showcase}
+% <showcaseicon commands go here>
+\end{showcase}
+
+\PrintChanges
+\PrintIndex
+\end{document}
+
+
+%% end of file `fontawesome.tex'.
