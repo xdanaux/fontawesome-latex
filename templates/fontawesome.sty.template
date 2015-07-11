@@ -1,5 +1,5 @@
 %% start of file `fontawesome.sty'.
-%% Copyright 2015 Xavier Danaux (xdanaux@gmail.com).
+%% Copyright 2013-2015 Xavier Danaux (xdanaux@gmail.com).
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License version 1.3c,
@@ -10,7 +10,7 @@
 %                identification
 %-------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{fontawesome}[2015/07/07 v4.3.0 font awesome icons]
+\ProvidesPackage{fontawesome}[2015/07/10 v4.3.0-1 font awesome icons]
 
 
 %-------------------------------------------------------------------------------

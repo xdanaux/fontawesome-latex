@@ -1,5 +1,5 @@
 %% start of file `fontawesome.tex'.
-%% Copyright 2015 Xavier Danaux (xdanaux@gmail.com).
+%% Copyright 2013-2015 Xavier Danaux (xdanaux@gmail.com).
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License version 1.3c,
@@ -7,8 +7,8 @@
 
 \documentclass{ltxdoc}
 %\GetFileInfo{\jobname.sty}
-\def\fileversion{4.3.0}
-\def\filedate{July 07, 2015}
+\def\fileversion{4.3.0-1}
+\def\filedate{July 10, 2015}
 \usepackage{lmodern}
 \usepackage[numbered]{hypdoc}
 \usepackage{hologo}
@@ -37,6 +37,7 @@ The \textsf{\jobname} package grants access to 519 web-related icons provided by
 This package works both with \hologo{Xe}\hologo{(La)TeX} and Lua\hologo{(La)TeX} (using \textsf{fontspec} to load the included original \textsf{otf} font), as well as pdf\hologo{(La)TeX} (using an included \textsf{type1} conversion and character mapping of the font).
 \end{abstract}
 
+\changes{v4.3.0-1}{2015/07/10}{Converted the otf font to 1000upm Update to match Font Awesome version 4.3.0, with a total of 519 icons.}
 \changes{v4.3.0}  {2015/07/07}{Update to match Font Awesome version 4.3.0, with a total of 519 icons.}
 \changes{v3.1.1}  {2013/05/10}{Update to match Font Awesome version 3.1.1, with 53 new icons.}
 \changes{v3.0.2-1}{2013/03/23}{Bigfix release: corrected the swap of the \cs{text-height} and \cs{text-width} icons.}
