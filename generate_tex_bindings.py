@@ -6,6 +6,7 @@ import sys
 import subprocess
 import re
 import os, shutil
+import fontforge
 
 DEBUG=False;
 
@@ -344,22 +345,38 @@ pdftex_replace = {
 
 # command line arguments handling
 # ------------------------------------------------------------------------------
-#parser = argparse.ArgumentParser(description='Generate TeX bindings for the FontAwesome font by Dave Gandy.');
-#parser.add_argument('version', help='FontAwesome version, such as "3.4.0"')
-#args = parser.parse_args();
-#VERSION = args.version;
+parser = argparse.ArgumentParser(description='Generate TeX bindings for the FontAwesome font by Dave Gandy.');
+parser.add_argument('version', help='FontAwesome version, such as "4.3.0"')
+args = parser.parse_args();
+VERSION = args.version;
+FONT = 'FontAwesome.otf';
+CSS = 'FontAwesome.css';
 
-# try to download the font (.otf and .css) from fontawesome.io
+# download the font (.otf and .css) from fontawesome.io
 # ------------------------------------------------------------------------------
-#try:
-#  zip = "font-awesome-{}.zip".format(VERSION);
-#  subprocess.Popen(['curl', '-q', '-LOk', "http://fontawesome.io/assets/" + zip]);
-#  subprocess.call(['unzip', zip]);
-#  subprocess.call(['rm', zip]);
-#  # move the files...
-#except:
-#  sys.exit("[Error] Can't download font: {}".format(sys.exc_info()[1]))
-
+if os.path.isfile(FONT) and subprocess.check_output(['otfinfo', '-v', FONT], universal_newlines=True).split()[1] == VERSION:
+  print("Font already present");
+else:
+  # download the otf font and css
+  print("Downloading the font and css...", end="");
+  try:
+    ZIP = "font-awesome-{}.zip".format(VERSION);
+    subprocess.call(['curl', '-s', '-f', '-LOk', "http://fontawesome.io/assets/" + ZIP]);
+    subprocess.call(['unzip', '-q', ZIP]);
+    os.rename("font-awesome-{}/fonts/FontAwesome.otf".format(VERSION), FONT)
+    os.rename("font-awesome-{}/css/font-awesome.css".format(VERSION), CSS)
+    subprocess.call(['rm', '-R', ZIP, "font-awesome-{}/".format(VERSION)]);
+  except:
+    sys.exit("[Error] Can't download and extract the font: {}".format(sys.exc_info()[1]))
+  print(" done");
+  # convert the otf font to 1000 UPM to prevent a bug in xdvipdfmx causing bad
+  # (cfr http://tex.stackexchange.com/questions/134121/fontawesome-icons-are-getting-too-big-using-xelatex)
+  print("Converting the font to 1000 upm...", end="");
+  font = fontforge.open(FONT);
+  font.em = 1000;
+  font.generate("FontAwesome-1000upm.otf");
+  os.rename("FontAwesome-1000upm.otf", FONT);
+  print(" done");
 
 # ==============================================================================
 # generic
@@ -367,7 +384,7 @@ pdftex_replace = {
 # parse the css to get the associated symbols numbers of each glyph
 # ------------------------------------------------------------------------------
 print("Identifying glyphs from css...", end="");
-css_file = open('FontAwesome.css', 'r');
+css_file = open(CSS, 'r');
 css = css_file.read();
 css_file.close();
 # identify independent icons (icon styles were named icon-* in version 3.1.0, fa-* in version 4.3.0
@@ -427,7 +444,7 @@ print(" done");
 # ------------------------------------------------------------------------------
 print("Generating the pdftex symbol list...", end="");
 try:
-  glyphs_names = subprocess.check_output(['otfinfo', '-g', 'FontAwesome.otf'], universal_newlines=True).strip().split();
+  glyphs_names = subprocess.check_output(['otfinfo', '-g', FONT], universal_newlines=True).strip().split();
   glyphs_names = sorted([x for x in glyphs_names if x != '.notdef' and pdftex_replace.get(x) != '.notdef']);
 except:
   sys.exit("\n[Error] Can't run otfinfo: {}".format(sys.exc_info()[1]))
@@ -491,7 +508,7 @@ otftotfm_errors = open("otftotfm_errors.log", 'w');
 for i in range(1, encfile_count+1):
   try:
     encfile_name = 'fontawesome{}.enc'.format(numbers[i]);
-    command = ['otftotfm', 'FontAwesome.otf',
+    command = ['otftotfm', FONT,
       '--literal-encoding=' + encfile_name,
       '--tfm-directory=' + TFM,
       '--encoding-directory=' + ENC,
@@ -501,7 +518,7 @@ for i in range(1, encfile_count+1):
     maplines.append("\\font\\FA{}=FontAwesome--".format(numbers[i]) + encfile_name);
     os.rename(encfile_name, os.path.join(ENC, encfile_name));
     if OTF is not "./":
-      shutil.copy('FontAwesome.otf', os.path.join(OTF, 'FontAwesome.otf'));
+      shutil.copy(FONT, os.path.join(OTF, FONT));
   except:
     sys.exit("[Error] Can't run otftotfm: {}".format(sys.exc_info()[1]))
 otftotfm_errors.close();
