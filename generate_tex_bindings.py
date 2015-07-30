@@ -515,7 +515,9 @@ for i in range(1, encfile_count+1):
       '--type1-directory=' + T1];
     mapline = subprocess.check_output(command, stderr=otftotfm_errors, universal_newlines=True).strip();
     maplines.append("\\pdfmapline{{+{}}}".format(mapline));
-    maplines.append("\\font\\FA{}=FontAwesome--".format(numbers[i]) + encfile_name);
+    maplines.append("\\DeclareFontFamily{{U}}{{fontawesome{}}}{{}}".format(numbers[i]));
+    maplines.append("\\DeclareFontShape{{U}}{{fontawesome{}}}{{m}}{{n}}{{<->FontAwesome--fontawesome{}}}{{}}".format(numbers[i], numbers[i]));
+    maplines.append("\\DeclareRobustCommand{{\\FA{}}}{{\\usefont{{U}}{{fontawesome{}}}{{m}}{{n}}}}".format(numbers[i], numbers[i]));    
     os.rename(encfile_name, os.path.join(ENC, encfile_name));
     if OTF is not "./":
       shutil.copy(FONT, os.path.join(OTF, FONT));
