@@ -10,7 +10,7 @@
 %                identification
 %-------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{fontawesome}[2015/07/10 v4.3.0-1 font awesome icons]
+\ProvidesPackage{fontawesome}[2015/07/30 v4.4.0 font awesome icons]
 
 
 %-------------------------------------------------------------------------------

@@ -331,10 +331,10 @@ pdftex_replace = {
   "_519"                  : "mars-stroke-v",
   "_520"                  : "mars-stroke-h",
   "_521"                  : "neuter",
-  "_522"                  : ".notdef",             #f22d (blank)
+  "_522"                  : "genderless",          #f22d
   "_523"                  : ".notdef",             #f22e (blank)
   "_524"                  : ".notdef",             #f22f (blank)
-  "_525"                  : "facebook-official",
+  "_525"                  : "facebook-official",   #f230
   "_526"                  : "pinterest-p",
   "_527"                  : "whatsapp",
   "_528"                  : "server",
@@ -344,11 +344,86 @@ pdftex_replace = {
   "_532"                  : "viacoin",
   "_533"                  : "train",
   "_534"                  : "subway",
-  "_535"                  : "medium",
-  "_536"                  : ".notdef",             #f23b (blank)
-  "_537"                  : ".notdef",             #f23c (blank)
-  "_538"                  : ".notdef",             #f23d (blank)
-  "_539"                  : ".notdef",             #f23e (blank)
+  "_535"                  : "medium",              #f23a
+  "_536"                  : "y-combinator",        #f23b
+  "_537"                  : "optin-monster",
+  "_538"                  : "opencart",
+  "_539"                  : "expeditedssl",
+  "_540"                  : "battery-full",
+  "_541"                  : "battery-three-quarters",
+  "_542"                  : "battery-half",
+  "_543"                  : "battery-quarter",
+  "_544"                  : "battery-empty",
+  "_545"                  : "mouse-pointer",
+  "_546"                  : "i-cursor",
+  "_547"                  : "object-group",
+  "_548"                  : "object-ungroup",
+  "_549"                  : "sticky-note",
+  "_550"                  : "sticky-note-o",
+  "_551"                  : "cc-jcb",
+  "_552"                  : "cc-diners-club",
+  "_553"                  : "clone",
+  "_554"                  : "balance-scale",
+  "_555"                  : "hourglass-o",
+  "_556"                  : "hourglass-start",
+  "_557"                  : "hourglass-half",
+  "_558"                  : "hourglass-end",
+  "_559"                  : "hourglass",
+  "_560"                  : "hand-rock-o",
+  "_561"                  : "hand-paper-o",
+  "_562"                  : "hand-scissors-o",
+  "_563"                  : "hand-lizard-o",
+  "_564"                  : "hand-spock-o",
+  "_565"                  : "hand-pointer-o",
+  "_566"                  : "hand-peace-o",
+  "_567"                  : "trademark",
+  "_568"                  : "registered",
+  "_569"                  : "creative-commons",    #f25e
+  "f260"                  : "gg",
+  "f261"                  : "gg-circle",
+  "_572"                  : "tripadvisor",
+  "f263"                  : "odnoklassniki",
+  "_574"                  : "odnoklassniki-square",
+  "_575"                  : "get-pocket",
+  "_576"                  : "wikipedia-w",         #f266
+  "_577"                  : "safari",
+  "_578"                  : "chrome",
+  "_579"                  : "firefox",
+  "_580"                  : "opera",
+  "_581"                  : "internet-explorer",   #f26c
+  "_582"                  : "television",
+  "_583"                  : "contao",
+  "_584"                  : "500px",               #f26e
+  "_585"                  : "amazon",
+  "_586"                  : "calendar-plus-o",
+  "_587"                  : "calendar-minus-o",
+  "_588"                  : "calendar-times-o",
+  "_589"                  : "calendar-check-o",
+  "_590"                  : "industry",            #f275
+  "_591"                  : "map-pin",
+  "_592"                  : "map-signs",
+  "_593"                  : "map-o",
+  "_594"                  : "map",
+  "_595"                  : "commenting",
+  "_596"                  : "commenting-o",
+  "_597"                  : "houzz",
+  "_598"                  : "vimeo",
+  "f27e"                  : "black-tie",           #f27e
+  "uniF280"               : "fonticons",           #f280
+  "uniF281"               : ".notdef",             #f281 (blank)
+  "_602"                  : ".notdef",             #f282 (blank)
+  "_603"                  : ".notdef",             #f283 (blank)
+  "_604"                  : ".notdef",             #f284 (blank)
+  "uniF285"               : ".notdef",             #f285 (blank)
+  "uniF286"               : ".notdef",             #f286 (blank)
+  "_607"                  : ".notdef",             #f287 (blank)
+  "_608"                  : ".notdef",             #f288 (blank)
+  "_609"                  : ".notdef",             #f289 (blank)
+  "_610"                  : ".notdef",             #f28a (blank)
+  "_611"                  : ".notdef",             #f28b (blank)
+  "_612"                  : ".notdef",             #f28c (blank)
+  "_613"                  : ".notdef",             #f28d (blank)
+  "_614"                  : ".notdef",             #f28e (blank)
   "lessequal"             : ".notdef",             #f500 (blank)
 }
 
@@ -397,11 +472,11 @@ print("Identifying glyphs from css...", end="");
 css_file = open(CSS, 'r');
 css = css_file.read();
 css_file.close();
-# identify independent icons (icon styles were named icon-* in version 3.1.0, fa-* in version 4.3.0
-pattern = re.compile(r"\.(icon|fa)-([a-z1-9-]+):before\s*\{\s*content:\s*\"(\\[0-9a-fA-F]{4,4})\";?\s*\}", re.MULTILINE);
+# identify independent icons (icon styles were named icon-* in version 3.1.0, fa-* in version 4.3.0+
+pattern = re.compile(r"\.(icon|fa)-([a-z0-9-]+):before\s*\{\s*content:\s*\"(\\[0-9a-fA-F]{4,4})\";?\s*\}", re.MULTILINE);
 glyphs = [ (glyph_name, glyph_symbol) for (icon_or_fa, glyph_name, glyph_symbol) in re.findall(pattern, css)];
 # identify aliases
-pattern = re.compile(r"(?=\.(icon|fa)-([a-z1-9-]+):before,\s*\.(icon|fa)-([a-z1-9-]+):before\s*[,{])", re.MULTILINE);
+pattern = re.compile(r"(?=\.(icon|fa)-([a-z0-9-]+):before,\s*\.(icon|fa)-([a-z0-9-]+):before\s*[,{])", re.MULTILINE);
 aliases = dict([ (glyph_alias, glyph_name) for (icon_or_fa1, glyph_alias, icon_or_fa2, glyph_name) in re.findall(pattern, css)]);
 del(css);
 # recurse through indirect aliases
