@@ -4,11 +4,21 @@
 import argparse
 import sys
 import subprocess
+import datetime
 import re
 import os, shutil
 import fontforge
 
 DEBUG=False;
+
+COPYRIGHT="""\
+%% Copyright 2015 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+""";
 
 numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
 
@@ -498,8 +508,9 @@ TFM = "./"; #"texmf/fonts/tfm/public/fontawesome"
 ENC = "./"; #"texmf/fonts/enc/pdftex/public/fontawesome"
 T1  = "./"; #"texmf/fonts/type1/public/fontawesome"
 OTF = "./"; #"texmf/fonts/opentype/public/fontawesome"
+MAP = "./"; #"texmf/fonts/map/dvips/fontawesome/"
 
-for path in [TFM, ENC, T1, OTF]:
+for path in [TFM, ENC, T1, OTF, MAP]:
   os.makedirs(path, exist_ok=True);
 
 # generate the t1 files
@@ -514,22 +525,48 @@ for i in range(1, encfile_count+1):
       '--encoding-directory=' + ENC,
       '--type1-directory=' + T1];
     mapline = subprocess.check_output(command, stderr=otftotfm_errors, universal_newlines=True).strip();
-    maplines.append("\\pdfmapline{{+{}}}".format(mapline));
-    maplines.append("\\DeclareFontFamily{{U}}{{fontawesome{}}}{{}}".format(numbers[i]));
-    maplines.append("\\DeclareFontShape{{U}}{{fontawesome{}}}{{m}}{{n}}{{<->FontAwesome--fontawesome{}}}{{}}".format(numbers[i], numbers[i]));
-    maplines.append("\\DeclareRobustCommand{{\\FA{}}}{{\\usefont{{U}}{{fontawesome{}}}{{m}}{{n}}}}".format(numbers[i], numbers[i]));    
+#    maplines.append("\\pdfmapline{{+{}}}".format(mapline));
+#    maplines.append("\\DeclareFontFamily{{U}}{{fontawesome{}}}{{}}".format(numbers[i]));
+#    maplines.append("\\DeclareFontShape{{U}}{{fontawesome{}}}{{m}}{{n}}{{<->FontAwesome--fontawesome{}}}{{}}".format(numbers[i], numbers[i]));
+#    maplines.append("\\DeclareRobustCommand{{\\FA{}}}{{\\usefont{{U}}{{fontawesome{}}}{{m}}{{n}}}}".format(numbers[i], numbers[i]));
+    maplines.append(mapline);
     os.rename(encfile_name, os.path.join(ENC, encfile_name));
     if OTF is not "./":
       shutil.copy(FONT, os.path.join(OTF, FONT));
   except:
-    sys.exit("[Error] Can't run otftotfm: {}".format(sys.exc_info()[1]))
+    sys.exit("[Error] Can't run otftotfm: {}".format(sys.exc_info()[1]));
 otftotfm_errors.close();
 
-# write the maplines to the package file
+# generate the map file
+map_filename = 'fontawesome.map';
+map = open(os.path.join(MAP, map_filename), 'w');
+map.write("%% start of file `{}'.\n".format(map_filename));
+map.write(COPYRIGHT);
+map.write("\n".join(maplines) + "\n");
+map.write("\n%% end of file `{}'.\n".format(map_filename));
+map.close();
+
+# generate the font definition (.fd) files
+for i in range(1, encfile_count+1):
+  fd_filename = 'ufontawesome{}.fd'.format(numbers[i]);
+  fd = open(fd_filename, 'w');
+  fd.write("%% start of file `{}'.\n".format(fd_filename));
+  fd.write(COPYRIGHT);
+  fd.write("\\ProvidesFile{{{}}}[{:%Y/%m/%d} Font definitions for U/fontawesome{}.]\n\n".format(fd_filename, datetime.date.today(), numbers[i]));
+  fd.write("\\DeclareFontFamily{{U}}{{fontawesome{}}}{{}}\n".format(numbers[i]));
+  fd.write("\\DeclareFontShape{{U}}{{fontawesome{}}}{{m}}{{n}}{{<-> FontAwesome--fontawesome{}}}{{}}\n\n".format(numbers[i], numbers[i]));
+  fd.write("\\endinput\n");
+  fd.write("\n%% end of file `{}'.\n".format(fd_filename));
+  fd.close();
+
+# add the \FA... font definitions to the package file
 with open('templates/fontawesome.sty.template', 'r') as template, open('fontawesome.sty', 'w') as sty:
   for line in template:
     if line == "% <maplines go here>\n":
-      sty.write('\n'.join(maplines) + "\n");
+#      sty.write('\n'.join(maplines) + "\n");
+      for i in range(1, encfile_count+1):
+        sty.write("\\DeclareRobustCommand\\FA{}{{\\fontencoding{{U}}\\fontfamily{{fontawesome{}}}\selectfont}}\n".format(numbers[i], numbers[i]));
+#        sty.write("\\newcommand*\\FA{}{{\\fontencoding{{U}}\\fontfamily{{fontawesome{}}}\selectfont}}\n".format(numbers[i], numbers[i]));
     else:
       sty.write(line);
 template.close();
@@ -537,9 +574,12 @@ sty.close();
 
 # generate the tex symbols list file
 # ------------------------------------------------------------------------------
-symbols = open('fontawesomesymbols-pdftex.tex', 'w');
+symbols_filename = 'fontawesomesymbols-pdftex.tex';
+symbols = open(symbols_filename, 'w');
+symbols.write("%% start of file `{}'.\n".format(symbols_filename));
 for glyph_count, glyph_name in enumerate(pdftex_glyphs_names):
   symbols.write("\\expandafter\\def\\csname faicon@{}\\endcsname{{{{\\FA{}\\symbol{{{}}}}}}}\n".format(glyph_name, numbers[glyph_count//256 +1], glyph_count % 256));
+symbols.write("\n%% end of file `{}'.\n".format(symbols_filename));
 symbols.close();
 print(" done");
 

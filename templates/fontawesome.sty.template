@@ -48,7 +48,7 @@
 \input{fontawesomesymbols-xeluatex.tex}
 
 %-------------------------------------------------------------------------------
-%                pdflatex implementation
+%                (pdf)latex implementation
 %-------------------------------------------------------------------------------
 \else
 % definition of \FA... as a shortcut to load the Font Awesome font

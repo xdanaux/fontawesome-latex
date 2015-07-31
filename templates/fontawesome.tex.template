@@ -7,8 +7,8 @@
 
 \documentclass{ltxdoc}
 %\GetFileInfo{\jobname.sty}
-\def\fileversion{4.3.0-1}
-\def\filedate{July 10, 2015}
+\def\fileversion{4.3.0-2}
+\def\filedate{July 30, 2015}
 \usepackage{lmodern}
 \usepackage[numbered]{hypdoc}
 \usepackage{hologo}
@@ -34,14 +34,15 @@
 \begin{abstract}
 The \textsf{\jobname} package grants access to 519 web-related icons provided by the included \emph{Font Awesome} free font, designed by Dave Gandy and released\footnote{See \url{http://fortawesome.github.com/Font-Awesome} for more details about the font itself} under the open SIL Open Font License\footnote{Available at \url{http://scripts.sil.org/OFL}.}.
 
-This package works both with \hologo{Xe}\hologo{(La)TeX} and Lua\hologo{(La)TeX} (using \textsf{fontspec} to load the included original \textsf{otf} font), as well as pdf\hologo{(La)TeX} (using an included \textsf{type1} conversion and character mapping of the font).
+This package works both with \hologo{Xe}\hologo{(La)TeX} and Lua\hologo{(La)TeX} (using \textsf{fontspec} to load the included original \textsf{otf} font), as well as (pdf)\hologo{(La)TeX} (using an included \textsf{type1} conversion and character mapping of the font).
 \end{abstract}
 
+\changes{v4.3.0-2}{2015/07/30}{Corrected the (pdf)\hologo{(La)TeX} font definitions to enable proper scaling, and enabled dvi/ps support.}
 \changes{v4.3.0-1}{2015/07/10}{Converted the otf font to 1000upm to avoid a bug within xdvipdfmx.}
-\changes{v4.3.0}  {2015/07/07}{Update to match Font Awesome version 4.3.0, with a total of 519 icons.}
+\changes{v4.3.0}  {2015/07/07}{Update to match Font Awesome version 4.3.0, with a total of 519 icons, and enabled pdf\hologo{(La)TeX} support.}
 \changes{v3.1.1}  {2013/05/10}{Update to match Font Awesome version 3.1.1, with 53 new icons.}
-\changes{v3.0.2-1}{2013/03/23}{Bigfix release: corrected the swap of the \cs{text-height} and \cs{text-width} icons.}
-\changes{v3.0.2}  {2013/03/21}{First public release (version number set to match the included FontAwesome.otf font version).}
+\changes{v3.0.2-1}{2013/03/23}{Corrected the swap of the \cs{text-height} and \cs{text-width} icons.}
+\changes{v3.0.2}  {2013/03/21}{First public release (version number set to match the included FontAwesome.otf font version), requiring \hologo{Xe}- or Lua\hologo{(La)TeX}.}
 \makeatletter
 \let\PrintMacroName@original\PrintMacroName
 %\let\PrintDescribeMacro\@gobble
@@ -94,7 +95,7 @@ pictograms.
 It is a redistribution of the free (as in beer) \emph{Font Awesome} font with specific bindings for \hologo{(La)TeX}.
 
 \section{Requirements}
-The \textsf{\jobname} package requires the \textsf{fontspec} package when using the \hologo{Xe}\hologo{(La)TeX} or Lua\hologo{(La)TeX} engines to load the included otf font. When using the pdf\hologo{(La)TeX} engine, the \textsf{\jobname} package doesn't require any external package.
+The \textsf{\jobname} package requires the \textsf{fontspec} package when using the \hologo{Xe}\hologo{(La)TeX} or Lua\hologo{(La)TeX} engines to load the included otf font. When using the (pdf)\hologo{(La)TeX} engine, the \textsf{\jobname} package doesn't require any external package.
 
 \section{Usage}
 \DescribeMacro{\faicon}
