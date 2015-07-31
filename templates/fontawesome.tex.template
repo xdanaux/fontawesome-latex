@@ -26,18 +26,23 @@
 \begin{document}
 \title{The \textsf{\jobname} package\\High quality web icons}
 \author{%
-  Xavier Danaux\thanks{E-mail: \href{mailto:xdanaux@gmail.com}{\tt xdanaux@gmail.com}} (\hologo{LaTeX} code)\\%
-  Dave Gandy (font and icons design)}
+  Xavier Danaux\thanks{%
+    URL: \href{https://github.com/xdanaux/fontawesome-latex}{github.com/xdanaux/fontawesome-latex};
+    Licence: \href{http://latex-project.org/lppl/lppl-1-3c.txt}{LaTeX Project Public License, version 1.3c};
+    E-mail: \href{mailto:xdanaux@gmail.com}{\tt xdanaux@gmail.com}.} (\hologo{(La)TeX} code)\\%
+  Dave Gandy\thanks{%
+    URL: \href{http://fontawesome.io}{fontawesome.io};
+    Licence: \href{http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL11.txt}{SIL Open Font License, version 1.1}.} (font design)}
 \date{Version \fileversion, released on \filedate}
 \maketitle
 
 \begin{abstract}
-The \textsf{\jobname} package grants access to 519 web-related icons provided by the included \emph{Font Awesome} free font, designed by Dave Gandy and released\footnote{See \url{http://fortawesome.github.com/Font-Awesome} for more details about the font itself} under the open SIL Open Font License\footnote{Available at \url{http://scripts.sil.org/OFL}.}.
+The \textsf{\jobname} package grants access to 519 web-related icons provided by the included \emph{Font Awesome} font, designed by Dave Gandy and released under the open SIL Open Font License.
 
 This package works both with \hologo{Xe}\hologo{(La)TeX} and Lua\hologo{(La)TeX} (using \textsf{fontspec} to load the included original \textsf{otf} font), as well as (pdf)\hologo{(La)TeX} (using an included \textsf{type1} conversion and character mapping of the font).
 \end{abstract}
 
-\changes{v4.3.0-2}{2015/07/30}{Corrected the (pdf)\hologo{(La)TeX} font definitions to enable proper scaling, and enabled dvi/ps support.}
+\changes{v4.3.0-2}{2015/07/30}{Corrected the (pdf)\hologo{(La)TeX} font definitions to enable scaling, and enabled dvi/ps support.}
 \changes{v4.3.0-1}{2015/07/10}{Converted the otf font to 1000upm to avoid a bug within xdvipdfmx.}
 \changes{v4.3.0}  {2015/07/07}{Update to match Font Awesome version 4.3.0, with a total of 519 icons, and enabled pdf\hologo{(La)TeX} support.}
 \changes{v3.1.1}  {2013/05/10}{Update to match Font Awesome version 3.1.1, with 53 new icons.}
