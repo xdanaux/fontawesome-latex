@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
 # usage: generate_tex_bindings.py <VERSION>
 
-import argparse
-import sys
-import subprocess
-import datetime
-import re
-import os, shutil
-import fontforge
+import sys, argparse;
+import subprocess, re, os, shutil;
+import datetime;
+import fontforge;
 
-DEBUG=False;
+DEBUG = os.environ.get('DEBUG', False); # DEBUG can be set as an environment variable when calling this script, and is set to False by default
 
-COPYRIGHT="""\
+COPYRIGHT = """\
 %% Copyright 2015 Xavier Danaux (xdanaux@gmail.com).
 %
 % This work may be distributed and/or modified under the
@@ -516,7 +513,6 @@ print("Generating the xe-/luatex symbol list...", end="");
 symbols = open('fontawesomesymbols-xeluatex.tex', 'w');
 for glyph_name, glyph_symbol in glyphs:
   glyph_name = aliases.get(glyph_name, glyph_name); # in case the glyph is named after an alias in the otf file
-#  print(str(glyph_name) + ": " + str(glyph_symbol)); # debug
   symbols.write("\\expandafter\\def\\csname faicon@{}\\endcsname{{{{\\FA\\symbol{{{}}}}}}}\n".format(glyph_name, glyph_symbol.replace('\\','"').upper()));
 symbols.close();
 print(" done");
@@ -539,7 +535,6 @@ pdftex_glyphs_names = [pdftex_replace.get(glyph_name, glyph_name).replace('_', '
 diff1 = set(dict(glyphs).keys()).difference(set(pdftex_glyphs_names)); # or use symmetric_difference()
 diff2 = set(pdftex_glyphs_names).difference(set(dict(glyphs).keys()));
 if diff1 or diff2:
-#  sys.exit("\n[Issue] xe-/luatex and pdftex glyphs do not match:\n  Missing from pdftex glyphs ({}): {}\n  Missing from xe-/luatex glyphs ({}): {}".format(len(diff1), sorted(diff1), len(diff2), sorted(diff2)));
   print("\n[Issue] xe-/luatex and pdftex glyphs do not match");
   print("  Missing from pdftex glyphs ({}):".format(len(diff1)));
   if DEBUG:
@@ -548,7 +543,8 @@ if diff1 or diff2:
   print("  Missing from xe-/luatex glyphs ({}):".format(len(diff2)));
   if DEBUG:
     for missing in sorted(diff2):
-      print("    {}".format(missing));    
+      print("    {}".format(missing));
+#  sys.exit();
 
 
 # write the required number of enc files, each with up to 256 glyphs
@@ -565,7 +561,6 @@ for glyph_count, glyph_name in enumerate(glyphs_names):
     encfile.write("/fontawesome{} [\n".format(numbers[encfile_count]));
   # write the glyph
   encfile.write("/{}\n".format(glyph_name));
-#  print("{}-{}: {}".format(encfile_count, glyph_count, glyph_name)); # debug
 
 # fill the last enc file up to 256 characters
 while glyph_count + 1 < encfile_count * 256:
@@ -600,10 +595,6 @@ for i in range(1, encfile_count+1):
       '--encoding-directory=' + ENC,
       '--type1-directory=' + T1];
     mapline = subprocess.check_output(command, stderr=otftotfm_errors, universal_newlines=True).strip();
-#    maplines.append("\\pdfmapline{{+{}}}".format(mapline));
-#    maplines.append("\\DeclareFontFamily{{U}}{{fontawesome{}}}{{}}".format(numbers[i]));
-#    maplines.append("\\DeclareFontShape{{U}}{{fontawesome{}}}{{m}}{{n}}{{<->FontAwesome--fontawesome{}}}{{}}".format(numbers[i], numbers[i]));
-#    maplines.append("\\DeclareRobustCommand{{\\FA{}}}{{\\usefont{{U}}{{fontawesome{}}}{{m}}{{n}}}}".format(numbers[i], numbers[i]));
     maplines.append(mapline);
     os.rename(encfile_name, os.path.join(ENC, encfile_name));
     if OTF is not "./":
@@ -641,7 +632,6 @@ with open('templates/fontawesome.sty.template', 'r') as template, open('fontawes
 #      sty.write('\n'.join(maplines) + "\n");
       for i in range(1, encfile_count+1):
         sty.write("\\DeclareRobustCommand\\FA{}{{\\fontencoding{{U}}\\fontfamily{{fontawesome{}}}\selectfont}}\n".format(numbers[i], numbers[i]));
-#        sty.write("\\newcommand*\\FA{}{{\\fontencoding{{U}}\\fontfamily{{fontawesome{}}}\selectfont}}\n".format(numbers[i], numbers[i]));
     else:
       sty.write(line);
 template.close();
