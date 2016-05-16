@@ -1,6 +1,6 @@
 #fontawesome: high quality web icons#
 
-The **fontawesome** package grants access to 585 web-related icons provided by
+The **fontawesome** package grants access to 634 web-related icons provided by
 the included _Font Awesome_ free font, designed by Dave Gandy and released under
 the open SIL Open Font License (available at http://scripts.sil.org/OFL).
 See http://www.fontawesome.io for more details about the font itself.

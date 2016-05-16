@@ -1,5 +1,5 @@
 %% start of file `fontawesome.tex'.
-%% Copyright 2013-2015 Xavier Danaux (xdanaux@gmail.com).
+%% Copyright 2013-2016 Xavier Danaux (xdanaux@gmail.com).
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License version 1.3c,
@@ -7,8 +7,8 @@
 
 \documentclass{ltxdoc}
 %\GetFileInfo{\jobname.sty}
-\def\fileversion{4.4.0}
-\def\filedate{July 30, 2015}
+\def\fileversion{4.6.3}
+\def\filedate{May 15, 2016}
 \usepackage{lmodern}
 \usepackage[numbered]{hypdoc}
 \usepackage{hologo}
@@ -37,11 +37,12 @@
 \maketitle
 
 \begin{abstract}
-The \textsf{\jobname} package grants access to 585 web-related icons provided by the included \emph{Font Awesome} font, designed by Dave Gandy and released under the open SIL Open Font License.
+The \textsf{\jobname} package grants access to 634 web-related icons provided by the included \emph{Font Awesome} font, designed by Dave Gandy and released under the open SIL Open Font License.
 
 This package works both with \hologo{Xe}\hologo{(La)TeX} and Lua\hologo{(La)TeX} (using \textsf{fontspec} to load the included original \textsf{otf} font), as well as (pdf)\hologo{(La)TeX} (using an included \textsf{type1} conversion and character mapping of the font).
 \end{abstract}
 
+\changes{v4.6.3}  {2016/05/15}{Update to match Font Awesome version 4.6.3, with a total of 634 icons.}
 \changes{v4.4.0}  {2015/07/30}{Update to match Font Awesome version 4.4.0, with a total of 585 icons.}
 \changes{v4.3.0-2}{2015/07/30}{Corrected the (pdf)\hologo{(La)TeX} font definitions to enable scaling, and enabled dvi/ps support.}
 \changes{v4.3.0-1}{2015/07/10}{Converted the otf font to 1000upm to avoid a bug within xdvipdfmx.}

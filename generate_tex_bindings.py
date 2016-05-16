@@ -204,8 +204,8 @@ pdftex_replace = {
   "f1a4"                  : "stumbleupon",
   "_395"                  : "delicious",
   "_396"                  : "digg",
-  "_397"                  : "pied-piper",
-  "_398"                  : "pied-piper-alt",
+  "_397"                  : "pied-piper-pp",       #f1a7
+  "_398"                  : "pied-piper-alt",      #f1a8
   "_399"                  : "drupal",
   "_400"                  : "joomla",
   "f1ab"                  : "language",            #f1ab
@@ -407,20 +407,65 @@ pdftex_replace = {
   "_598"                  : "vimeo",
   "f27e"                  : "black-tie",           #f27e
   "uniF280"               : "fonticons",           #f280
-  "uniF281"               : ".notdef",             #f281 (blank)
-  "_602"                  : ".notdef",             #f282 (blank)
-  "_603"                  : ".notdef",             #f283 (blank)
-  "_604"                  : ".notdef",             #f284 (blank)
-  "uniF285"               : ".notdef",             #f285 (blank)
-  "uniF286"               : ".notdef",             #f286 (blank)
-  "_607"                  : ".notdef",             #f287 (blank)
-  "_608"                  : ".notdef",             #f288 (blank)
-  "_609"                  : ".notdef",             #f289 (blank)
-  "_610"                  : ".notdef",             #f28a (blank)
-  "_611"                  : ".notdef",             #f28b (blank)
-  "_612"                  : ".notdef",             #f28c (blank)
-  "_613"                  : ".notdef",             #f28d (blank)
-  "_614"                  : ".notdef",             #f28e (blank)
+  "uniF281"               : "reddit-alien",        #f281
+  "_602"                  : "edge",                #f282
+  "_603"                  : "credit-card-alt",     #f283
+  "_604"                  : "codiepie",            #f284
+  "uniF285"               : "modx",                #f285
+  "uniF286"               : "fort-awesome",        #f286
+  "_607"                  : "usb",                 #f287
+  "_608"                  : "product-hunt",        #f288
+  "_609"                  : "mixcloud",            #f289
+  "_610"                  : "scribd",              #f28a
+  "_611"                  : "pause-circle",        #f28b
+  "_612"                  : "pause-circle-o",      #f28c
+  "_613"                  : "stop-circle",         #f28d
+  "_614"                  : "stop-circle-o",       #f28e
+  "_615"                  : "shopping-bag",        #f290
+  "_616"                  : "shopping-basket",     #f291
+  "_617"                  : "hashtag",             #f292
+  "_618"                  : "bluetooth",           #f293
+  "_619"                  : "bluetooth-b",         #f294
+  "_620"                  : "percent",             #f295
+  "_621"                  : "gitlab",              #f296
+  "_622"                  : "wpbeginner",          #f297
+  "_623"                  : "wpforms",             #f298
+  "_624"                  : "envira",              #f299
+  "_625"                  : "universal-access",    #f29a
+  "_626"                  : "wheelchair-alt",      #f29b
+  "_627"                  : "question-circle-o",   #f29c
+  "_628"                  : "blind",               #f29d
+  "_629"                  : "audio-description",   #f29e
+  "uniF2A0"               : "volume-control-phone",#f2a0
+  "uniF2A1"               : "braille",             #f2a1
+  "uniF2A2"               : "assistive-listening-systems",#f2a2
+  "uniF2A3"               : "american-sign-language-interpreting",#f2a3
+  "uniF2A4"               : "deaf",                #f2a4
+  "uniF2A5"               : "glide",               #f2a5
+  "uniF2A6"               : "glide-g",             #f2a6
+  "uniF2A7"               : "sign-language",       #f2a7
+  "uniF2A8"               : "low-vision",          #f2a8
+  "uniF2A9"               : "viadeo",              #f2a9
+  "uniF2AA"               : "viadeo-square",       #f2aa
+  "uniF2AB"               : "snapchat",            #f2ab
+  "uniF2AC"               : "snapchat-ghost",      #f2ac
+  "uniF2AD"               : "snapchat-square",     #f2ad
+  "uniF2AE"               : "pied-piper",          #f2ae
+  "uniF2B0"               : "first-order",         #f2b0
+  "uniF2B1"               : "yoast",               #f2b1
+  "uniF2B2"               : "themeisle",           #f2b2
+  "uniF2B3"               : "google-plus-official",#f2b3
+  "uniF2B4"               : "font-awesome",        #f2b4
+  "uniF2B5"               : ".notdef",             #f2b5
+  "uniF2B6"               : ".notdef",             #f2b6
+  "uniF2B7"               : ".notdef",             #f2b7
+  "uniF2B8"               : ".notdef",             #f2b8
+  "uniF2B9"               : ".notdef",             #f2b9
+  "uniF2BA"               : ".notdef",             #f2ba
+  "uniF2BB"               : ".notdef",             #f2bb
+  "uniF2BC"               : ".notdef",             #f2bc
+  "uniF2BD"               : ".notdef",             #f2bd
+  "uniF2BE"               : ".notdef",             #f2be
   "lessequal"             : ".notdef",             #f500 (blank)
 }
 
