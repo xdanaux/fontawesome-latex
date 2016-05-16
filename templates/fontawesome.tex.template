@@ -7,7 +7,7 @@
 
 \documentclass{ltxdoc}
 %\GetFileInfo{\jobname.sty}
-\def\fileversion{4.6.3}
+\def\fileversion{4.6.3.1}
 \def\filedate{May 15, 2016}
 \usepackage{lmodern}
 \usepackage[numbered]{hypdoc}
@@ -42,6 +42,22 @@ The \textsf{\jobname} package grants access to 634 web-related icons provided by
 This package works both with \hologo{Xe}\hologo{(La)TeX} and Lua\hologo{(La)TeX} (using \textsf{fontspec} to load the included original \textsf{otf} font), as well as (pdf)\hologo{(La)TeX} (using an included \textsf{type1} conversion and character mapping of the font).
 \end{abstract}
 
+% changelog
+\makeatletter
+\let\PrintMacroName@original\PrintMacroName
+%\let\PrintDescribeMacro\@gobble
+%\let\PrintDescribeEnv\@gobble
+\let\PrintMacroName\@gobble
+%\let\PrintEnvName\@gobble
+\begin{macro}{\faHourglass}
+\changes{v4.6.3.1}{2016/05/15}{Fixed definition.}
+\end{macro}
+\begin{macro}{\faHourglassX}
+\changes{v4.6.3.1}{2016/05/15}{Changed direct command name to \cs{faHourglass[X]}.}
+\end{macro}
+\begin{macro}{\faBatteryX}
+\changes{v4.6.3.1}{2016/05/15}{Changed direct command name \cs{faBattery[X]}.}
+\end{macro}
 \changes{v4.6.3}  {2016/05/15}{Update to match Font Awesome version 4.6.3, with a total of 634 icons.}
 \changes{v4.4.0}  {2015/07/30}{Update to match Font Awesome version 4.4.0, with a total of 585 icons.}
 \changes{v4.3.0-2}{2015/07/30}{Corrected the (pdf)\hologo{(La)TeX} font definitions to enable scaling, and enabled dvi/ps support.}
@@ -50,12 +66,6 @@ This package works both with \hologo{Xe}\hologo{(La)TeX} and Lua\hologo{(La)TeX}
 \changes{v3.1.1}  {2013/05/10}{Update to match Font Awesome version 3.1.1, with 53 new icons.}
 \changes{v3.0.2-1}{2013/03/23}{Corrected the swap of the \cs{text-height} and \cs{text-width} icons.}
 \changes{v3.0.2}  {2013/03/21}{First public release (version number set to match the included FontAwesome.otf font version), requiring \hologo{Xe}- or Lua\hologo{(La)TeX}.}
-\makeatletter
-\let\PrintMacroName@original\PrintMacroName
-%\let\PrintDescribeMacro\@gobble
-%\let\PrintDescribeEnv\@gobble
-\let\PrintMacroName\@gobble
-%\let\PrintEnvName\@gobble
 \begin{macro}{\faTextHeight}
 \changes{v3.0.2-1}{2013/03/23}{Corrected binding.}
 \end{macro}
@@ -135,7 +145,8 @@ Once the \textsf{\jobname} package loaded, icons can be accessed through the gen
     \textcolor{black!50}{(alias)}}{}%
   }}
 
-\subsection{Web application icons\label{section:web_application}}
+\section{List of icons}
+%\subsection{Web application icons\label{section:web_application}}
 \begin{showcase}
 % <showcaseicon commands go here>
 \end{showcase}

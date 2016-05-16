@@ -469,6 +469,19 @@ pdftex_replace = {
   "lessequal"             : ".notdef",             #f500 (blank)
 }
 
+# tex command replacements, as tex macro names cannot include numerals (see the "fix for FontAwesome icon names containing numerals" section in fontawesome.sty)
+tex_macro_names_replace = {
+  "Hourglass1"            : "Hourglass[1]",
+  "Hourglass2"            : "Hourglass[2]",
+  "Hourglass3"            : "Hourglass[3]",
+  "Battery0"              : "Battery[0]",
+  "Battery1"              : "Battery[1]",
+  "Battery2"              : "Battery[2]",
+  "Battery3"              : "Battery[3]",
+  "Battery4"              : "Battery[4]",
+};
+
+
 
 # command line arguments handling
 # ------------------------------------------------------------------------------
@@ -705,7 +718,8 @@ with open('templates/fontawesome.tex.template', 'r') as template, open('fontawes
   for line in template:
     if line == "% <showcaseicon commands go here>\n":
       for glyph, tag in all_glyphs:
-        doc.write("  \\showcaseicon{{{}}}{{fa{}}}{{{}}}\n".format(glyph, glyph.replace('-',' ').title().replace(' ',''), tag));
+        glyph_macro_name = glyph.replace('-',' ').title().replace(' ','');
+        doc.write("  \\showcaseicon{{{}}}{{fa{}}}{{{}}}\n".format(glyph, tex_macro_names_replace.get(glyph_macro_name, glyph_macro_name), tag));
     else:
       doc.write(line);
 template.close();

@@ -10,7 +10,7 @@
 %                identification
 %-------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{fontawesome}[2016/05/15 v4.6.3 font awesome icons]
+\ProvidesPackage{fontawesome}[2016/05/15 v4.6.3.1 font awesome icons]
 
 
 %-------------------------------------------------------------------------------
@@ -58,6 +58,14 @@
 \input{fontawesomesymbols-pdftex.tex}
 
 \fi
+
+%-------------------------------------------------------------------------------
+%                fix for FontAwesome icon names containing numerals
+%-------------------------------------------------------------------------------
+\renewcommand{\faHourglass}[1][]{%
+  \faicon{hourglass\if\relax\detokenize{#1}\relax\else-#1\fi}}
+\renewcommand{\faBattery}[1][4]{%
+  \faicon{battery-#1}}
 
 
 \endinput
