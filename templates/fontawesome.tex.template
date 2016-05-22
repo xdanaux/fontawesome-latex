@@ -7,8 +7,8 @@
 
 \documentclass{ltxdoc}
 %\GetFileInfo{\jobname.sty}
-\def\fileversion{4.6.3.1}
-\def\filedate{May 15, 2016}
+\def\fileversion{4.6.3.2}
+\def\filedate{May 22, 2016}
 \usepackage{lmodern}
 \usepackage[numbered]{hypdoc}
 \usepackage{hologo}
@@ -49,6 +49,9 @@ This package works both with \hologo{Xe}\hologo{(La)TeX} and Lua\hologo{(La)TeX}
 %\let\PrintDescribeEnv\@gobble
 \let\PrintMacroName\@gobble
 %\let\PrintEnvName\@gobble
+\begin{macro}{\fa500Px}
+\changes{v4.6.3.2}{2016/05/22}{Removed direct command.}
+\end{macro}
 \begin{macro}{\faHourglass}
 \changes{v4.6.3.1}{2016/05/15}{Fixed definition.}
 \end{macro}
@@ -116,8 +119,9 @@ The \textsf{\jobname} package requires the \textsf{fontspec} package when using 
 
 \section{Usage}
 \DescribeMacro{\faicon}
-Once the \textsf{\jobname} package loaded, icons can be accessed through the general \cs{faicon}, which takes as mandatory argument the \meta{name} of the desired icon, or through a direct command specific to each icon. The full list of icon designs, names and direct commands are showcased next.
+Once the \textsf{\jobname} package loaded, icons can be accessed through the general \cs{faicon}, which takes as mandatory argument the \meta{name} of the desired icon, or through a direct command specific to each icon. The full list of icon designs, names and direct commands are showcased in section \ref{section:icons}.
 
+\section{List of icons\label{section:icons}}
 \newenvironment{showcase}%
   {%
 %   \begin{longtable}{ccp{3cm}p{3.5cm}p{1cm}}% debug: shows icons with both generic and specific commands
@@ -144,9 +148,9 @@ Once the \textsf{\jobname} package loaded, icons can be accessed through the gen
   \ifthenelse{\equal{#1}{alias}}{%
     \textcolor{black!50}{(alias)}}{}%
   }}
-
-\section{List of icons}
 %\subsection{Web application icons\label{section:web_application}}
+%\subsection{Transportation icons\label{section:transportation}}
+%\subsection{...}
 \begin{showcase}
 % <showcaseicon commands go here>
 \end{showcase}
