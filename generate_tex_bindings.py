@@ -1,5 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # usage: generate_tex_bindings.py <VERSION>
+
+from __future__ import print_function 
 
 import sys, argparse;
 import subprocess, re, os, shutil;
@@ -486,7 +488,7 @@ tex_macro_names_replace = {
 # command line arguments handling
 # ------------------------------------------------------------------------------
 parser = argparse.ArgumentParser(description='Generate TeX bindings for the FontAwesome font by Dave Gandy.');
-parser.add_argument('version', help='FontAwesome version, such as "4.3.0"')
+parser.add_argument('version', help='FontAwesome version, such as "4.7.0"')
 args = parser.parse_args();
 VERSION = args.version;
 FONT = 'FontAwesome.otf';
@@ -639,7 +641,8 @@ OTF = "./"; #"texmf/fonts/opentype/public/fontawesome"
 MAP = "./"; #"texmf/fonts/map/dvips/fontawesome/"
 
 for path in [TFM, ENC, T1, OTF, MAP]:
-  os.makedirs(path, exist_ok=True);
+  if not os.path.exists(path):
+    os.makedirs(path);
 
 # generate the t1 files
 maplines = [];
