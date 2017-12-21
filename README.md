@@ -1,4 +1,4 @@
-#fontawesome: high quality web icons#
+# fontawesome: high quality web icons
 
 The **fontawesome** package grants access to 634 web-related icons provided by
 the included _Font Awesome_ free font, designed by Dave Gandy and released under
@@ -15,12 +15,13 @@ commands specific to each icon. The full list of icon designs, names and direct
 commands is showcased in the manual.
 
 
-Font Awesome font<br/>
-Author: Dave Gandy<br/>
-Licence: SIL Open Font License, version 1.1<br/>
-URL: http://www.fontawesome.io
+### Font Awesome font
 
-fontawesome LaTeX package<br/>
-Author: Xavier Danaux (<xdanaux@gmail.com>)<br/>
-Licence: The LaTeX Project Public License, version 1.3c<br/>
-URL: https://github.com/xdanaux/fontawesome-latex
+- Author: Dave Gandy
+- Licence: SIL Open Font License, version 1.1
+- URL: http://www.fontawesome.io
+
+### fontawesome LaTeX package
+- Author: Xavier Danaux (<xdanaux@gmail.com>)
+- Licence: The LaTeX Project Public License, version 1.3c
+- URL: https://github.com/xdanaux/fontawesome-latex
