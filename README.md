@@ -1,4 +1,4 @@
-#fontawesome: high quality web icons#
+# fontawesome: high quality web icons
 
 The **fontawesome** package grants access to 634 web-related icons provided by
 the included _Font Awesome_ free font, designed by Dave Gandy and released under
